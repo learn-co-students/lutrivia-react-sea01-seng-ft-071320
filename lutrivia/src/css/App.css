@@ -5,6 +5,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.flow > * + * {
+  margin-top: 1rem;
+}
+
 .flow-left > * + * {
   margin-left: 1rem;
 }

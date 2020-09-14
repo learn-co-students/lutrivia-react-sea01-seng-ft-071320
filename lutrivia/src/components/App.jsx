@@ -10,6 +10,7 @@ class App extends Component {
     questions: [...data.questions],
     current: 0,
     score: 0,
+    name: "",
   };
 
   score = () => {
@@ -47,9 +48,25 @@ class App extends Component {
     });
   };
 
+  handleInputChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    this.setState({
+      name: "",
+    });
+    console.log(`Submitted score ${this.state.score} for ${this.state.name}!`);
+    this.newGame();
+  };
+
   render() {
     return (
-      <div className="container">
+      <div className="container flow">
         <h1>Lutrivia</h1>
         <div className="flex flex-between">
           <button onClick={this.newGame} className="btn">
@@ -71,6 +88,16 @@ class App extends Component {
             />
           ) : null}
         </div>
+        <form onSubmit={this.handleSubmit} className="flex flow-left">
+          <input
+            onChange={this.handleInputChange}
+            type="text"
+            name="name"
+            value={this.state.name}
+            placeholder="Name"
+          />
+          <input type="submit" value="Submit Score" className="btn" />
+        </form>
       </div>
     );
   }

@@ -1,20 +1,20 @@
 import React from "react";
 
 function AnsweredQuestion(props) {
-  const trueStyle = {};
-  const falseStyle = {};
+  let trueBg = "grey";
+  let falseBg = "grey";
 
   if (props.response === true) {
     if (props.answer === true) {
-      trueStyle["background-color"] = "springGreen";
+      trueBg = "springGreen";
     } else {
-      trueStyle["background-color"] = "tomato";
+      trueBg = "tomato";
     }
   } else if (props.response === false) {
     if (props.answer === false) {
-      falseStyle["background-color"] = "springGreen";
+      falseBg = "springGreen";
     } else {
-      falseStyle["background-color"] = "tomato";
+      falseBg = "tomato";
     }
   }
 
@@ -22,10 +22,10 @@ function AnsweredQuestion(props) {
     <div className="question">
       <h2>{props.text}</h2>
       <div className="flex flow-left">
-        <button className="btn" style={trueStyle}>
+        <button className="btn" style={{ backgroundColor: trueBg }}>
           True
         </button>
-        <button className="btn" style={falseStyle}>
+        <button className="btn" style={{ backgroundColor: falseBg }}>
           False
         </button>
       </div>
